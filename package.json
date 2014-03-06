@@ -1,0 +1,15 @@
+{
+  "name": "bootstrap-test",
+  "version": "0.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-less": "~0.10.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-watch": "^0.5.3",
+    "grunt-newer": "^0.6.1"
+  }
+}

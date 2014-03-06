@@ -19,12 +19,22 @@ module.exports = function(grunt) {
         ext: '.js'
       }
     },
+    less: {
+      development: {
+        options: {
+          paths: ["less"]
+        },
+        files: {
+          "css/result.css": "less/global.less"
+        }
+      }
+    },
     watch: {
       grunt: { files: ['Gruntfile.js'] },
-      // less: {
-      //   files: 'scss/**/*.scss',
-      //   tasks: ['sass']
-      // },
+      less: {
+        files: 'less/*.less',
+        tasks: ['less']
+      },
       coffee: {
         options: {
           livereload: true
@@ -42,10 +52,11 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-newer');
 
-  grunt.registerTask('build', ['newer:sass', 'newer:coffee']);
+  grunt.registerTask('build', ['newer:less', 'newer:coffee']);
   grunt.registerTask('default', ['build','watch']);
 }
 
