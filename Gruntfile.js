@@ -2,22 +2,26 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     coffee: {
+
       compileJoined: {
         options: {
           join: true
-        },
-        files: {
-          'js/app.js': ['coffeescripts/*.coffee']
         }
       },
+
+      files: {
+        'js/app.js': ['coffeescript/*.coffee']
+      },
+
       glob_to_multiple: {
         expand: true,
         flatten: true,
-        cwd: 'p_coffeescripts',
+        cwd: 'p_coffeescript',
         src: ['*.coffee'],
         dest: 'js/plugins/',
         ext: '.js'
       }
+
     },
     less: {
       development: {
@@ -25,16 +29,18 @@ module.exports = function(grunt) {
           paths: ["less"]
         },
         files: {
-          "css/result.css": "less/global.less"
+          "css/app.css": "less/global.less"
         }
       }
     },
+
     watch: {
       grunt: { files: ['Gruntfile.js'] },
       less: {
         files: 'less/*.less',
         tasks: ['less']
       },
+
       coffee: {
         options: {
           livereload: true
@@ -42,6 +48,7 @@ module.exports = function(grunt) {
         files: ['coffeescripts/*.*', 'p_coffeescripts/*.*'],
         tasks: ['coffee']
       },
+
       html: {
         options: {
           livereload: true
@@ -49,6 +56,7 @@ module.exports = function(grunt) {
         files: ['*.html']
       }
     }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-coffee');
