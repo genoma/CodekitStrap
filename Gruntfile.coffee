@@ -8,8 +8,8 @@ module.exports = (grunt) ->
         options:
           join: true
 
-      files:
-        "js/app.js": ["coffeescript/*.coffee"]
+        files:
+          "js/app.js": ["coffeescript/*.coffee"]
 
       glob_to_multiple:
         expand: true
