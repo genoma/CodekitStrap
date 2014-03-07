@@ -7,7 +7,6 @@ module.exports = (grunt) ->
       compileJoined:
         options:
           join: true
-
         files:
           "js/app.js": ["coffeescript/*.coffee"]
 
