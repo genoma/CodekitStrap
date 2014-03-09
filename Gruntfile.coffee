@@ -3,6 +3,7 @@ module.exports = (grunt) ->
 
     pkg: grunt.file.readJSON("package.json")
 
+    # Compile CoffeeScript + Plugins
     coffee:
       compileJoined:
         options:
@@ -17,6 +18,7 @@ module.exports = (grunt) ->
         dest: "js/plugins/"
         ext: ".js"
 
+    # Compile Less
     less:
       development:
         options:
@@ -24,6 +26,7 @@ module.exports = (grunt) ->
         files:
           "css/app.css": "less/global.less"
 
+    # Uglify javascript files
     uglify:
       options:
         mangle: false
@@ -31,6 +34,7 @@ module.exports = (grunt) ->
         files:
           "js/app.min.js": ["js/app.js"]
 
+    # Minify CSS
     cssmin:
       add_banner:
         options:
@@ -38,6 +42,8 @@ module.exports = (grunt) ->
         files:
           "css/app.min.css": ["css/app.css"]
 
+    # Copy the relevants Bootstrap JS, project CSS, Bower modules
+    # to build a concrete development enviroment
     copy:
       html:
         expand: true
@@ -90,11 +96,15 @@ module.exports = (grunt) ->
         src: "js/*"
         dest: ""
 
+    # Concatenate the HTML files like a template manager
+    # framework ala Smarty does
     concat:
       index:
         src: ["templates/base/meta/index.html", "templates/base/header.html", "templates/index.html", "templates/base/footer.html"]
         dest: "index.html"
 
+    # Watch files changes and compile what it needs to be
+    # compiled.
     watch:
       less:
         files: "less/*.less"
@@ -122,6 +132,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-newer"
 
+  # The main build task
   grunt.registerTask "build", [
     "newer:concat"
     "newer:less"
@@ -129,10 +140,16 @@ module.exports = (grunt) ->
     "newer:cssmin"
     "newer:uglify"
   ]
+
+  # Build and watch for changes
   grunt.registerTask "default", [
     "build"
     "watch"
   ]
+
+  # Build the distribuition folder
+  # To run when Bootstrap is updated
+  # or to prepare the website deploy
   grunt.registerTask "dist", [
     "newer:copy"
   ]
