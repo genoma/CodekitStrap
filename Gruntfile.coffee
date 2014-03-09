@@ -92,7 +92,7 @@ module.exports = (grunt) ->
 
     concat:
       index:
-        src: ["templates/base/header.html", "templates/index.html", "templates/base/footer.html"]
+        src: ["templates/base/meta/index.html", "templates/base/header.html", "templates/index.html", "templates/base/footer.html"]
         dest: "index.html"
 
     watch:
@@ -110,7 +110,7 @@ module.exports = (grunt) ->
       html:
         options:
           livereload: true
-        files: ["templates/*.html", "templates/base/*.html"]
+        files: ["templates/*.html", "templates/base/*.html", "templates/base/meta/*.html"]
         tasks: ["newer:concat"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
