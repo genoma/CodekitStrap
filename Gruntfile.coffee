@@ -62,6 +62,12 @@ module.exports = (grunt) ->
         expand: true
         src: "*.html"
         dest: "dist/"
+        options:
+          process: (content, srcpath) ->
+            content = content.replace('<!-- CSSRefresh & Livereload - REMOVE BEFORE GOING LIVE  -->\n', '')
+            content = content.replace('<script src="cssrefresh.js"></script>\n', '')
+            content = content.replace('<script src="http://localhost:35729/livereload.js"></script>\n', '')
+            return content
       css:
         expand: true
         src: "css/**"
@@ -103,15 +109,22 @@ module.exports = (grunt) ->
         src: "js/*"
         dest: ""
 
+    concat:
+      index:
+        src: ["templates/base/header.html", "templates/index.html", "templates/base/footer.html"]
+        dest: "index.html"
+
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-less"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
   grunt.loadNpmTasks "grunt-contrib-copy"
+  grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-newer"
 
   grunt.registerTask "build", [
+    "newer:concat"
     "newer:copy"
     "newer:less"
     "newer:coffee"
@@ -123,6 +136,7 @@ module.exports = (grunt) ->
     "watch"
   ]
   grunt.registerTask "dist", [
+    "concat"
     "copy"
   ]
 
