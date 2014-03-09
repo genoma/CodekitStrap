@@ -38,25 +38,6 @@ module.exports = (grunt) ->
         files:
           "css/app.min.css": ["css/app.css"]
 
-    watch:
-      grunt:
-        files: ["Gruntfile.js"]
-      less:
-        files: "less/*.less"
-        tasks: ["less"]
-      coffee:
-        options:
-          livereload: true
-        files: [
-          "coffeescript/*.*"
-          "p_coffeescript/*.*"
-        ]
-        tasks: ["coffee"]
-      html:
-        options:
-          livereload: true
-        files: ["*.html"]
-
     copy:
       html:
         expand: true
@@ -114,6 +95,24 @@ module.exports = (grunt) ->
         src: ["templates/base/header.html", "templates/index.html", "templates/base/footer.html"]
         dest: "index.html"
 
+    watch:
+      less:
+        files: "less/*.less"
+        tasks: ["newer:less", "newer:cssmin"]
+      coffee:
+        options:
+          livereload: true
+        files: [
+          "coffeescript/*.*"
+          "p_coffeescript/*.*"
+        ]
+        tasks: ["newer:coffee", "newer:uglify"]
+      html:
+        options:
+          livereload: true
+        files: ["templates/*.html", "templates/base/*.html"]
+        tasks: ["newer:concat"]
+
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-less"
   grunt.loadNpmTasks "grunt-contrib-watch"
@@ -125,19 +124,17 @@ module.exports = (grunt) ->
 
   grunt.registerTask "build", [
     "newer:concat"
-    "newer:copy"
     "newer:less"
     "newer:coffee"
-    "uglify"
-    "cssmin"
+    "newer:cssmin"
+    "newer:uglify"
   ]
   grunt.registerTask "default", [
     "build"
     "watch"
   ]
   grunt.registerTask "dist", [
-    "concat"
-    "copy"
+    "newer:copy"
   ]
 
   return
