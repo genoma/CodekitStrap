@@ -148,10 +148,18 @@ module.exports = (grunt) ->
   ]
 
   # Build the distribuition folder
-  # To run when Bootstrap is updated
-  # or to prepare the website deploy
   grunt.registerTask "dist", [
-    "newer:copy"
+    "newer:copy:html"
+    "newer:copy:css"
+    "newer:copy:js"
+    "newer:copy:bower"
+    "newer:copy:bootstrapSP"
+    "newer:copy:bootstrapTOT"
   ]
 
+  # Prepare development
+  grunt.registerTask "prepare", [
+    "newer:copy:prepareSP"
+    "newer:copy:prepareTOT"
+  ]
   return
