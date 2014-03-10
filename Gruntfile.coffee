@@ -54,6 +54,8 @@ module.exports = (grunt) ->
             content = content.replace('<!-- CSSRefresh & Livereload - REMOVE BEFORE GOING LIVE  -->\n', '')
             content = content.replace('<script src="cssrefresh.js"></script>\n', '')
             content = content.replace('<script src="http://localhost:35729/livereload.js"></script>\n', '')
+            content = content.replace('app.css', 'app.min.css')
+            content = content.replace('app.js', 'app.min.js')
             return content
       img:
         expand: true
