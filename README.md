@@ -1,7 +1,7 @@
 bootstrap-configuration
 =======================
 
-Interface development configuration with Bootstrap as a git module, Grunt configuration for main project with Less, CoffeeScript support, templating support.
+Front end development configuration with Bootstrap as a git module, Grunt configuration for main project with Less, CoffeeScript support, templating support.
 
 ## Grunt Tasks
 
