@@ -55,6 +55,10 @@ module.exports = (grunt) ->
             content = content.replace('<script src="cssrefresh.js"></script>\n', '')
             content = content.replace('<script src="http://localhost:35729/livereload.js"></script>\n', '')
             return content
+      img:
+        expand: true
+        src: "images/**"
+        dest: "dist/"
       css:
         expand: true
         src: "css/**"
@@ -108,7 +112,7 @@ module.exports = (grunt) ->
     watch:
       less:
         files: "less/*.less"
-        tasks: ["newer:less", "newer:cssmin"]
+        tasks: ["less"]
       coffee:
         options:
           livereload: true
@@ -116,7 +120,7 @@ module.exports = (grunt) ->
           "coffeescript/*.*"
           "p_coffeescript/*.*"
         ]
-        tasks: ["newer:coffee", "newer:uglify"]
+        tasks: ["newer:coffee"]
       html:
         options:
           livereload: true
@@ -135,10 +139,10 @@ module.exports = (grunt) ->
   # The main build task
   grunt.registerTask "build", [
     "newer:concat"
-    "newer:less"
-    "newer:coffee"
-    "newer:cssmin"
-    "newer:uglify"
+    "less"
+    "coffee"
+    "cssmin"
+    "uglify"
   ]
 
   # Build and watch for changes
@@ -150,6 +154,7 @@ module.exports = (grunt) ->
   # Build the distribuition folder
   grunt.registerTask "dist", [
     "newer:copy:html"
+    "newer:copy:img"
     "newer:copy:css"
     "newer:copy:js"
     "newer:copy:bower"
