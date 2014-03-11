@@ -5,7 +5,8 @@
   "main": "Gruntfile.js",
   "dependencies": {
     "grunt": "~0.4.2",
-    "grunt-contrib-less": "~0.10.0"
+    "grunt-contrib-less": "~0.10.0",
+    "time-grunt": "^0.2.10"
   },
   "devDependencies": {
     "grunt-contrib-coffee": "^0.10.1",

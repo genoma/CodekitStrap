@@ -129,6 +129,8 @@ module.exports = (grunt) ->
         files: ["templates/*.html", "templates/base/*.html", "templates/base/meta/*.html"]
         tasks: ["newer:concat"]
 
+  require('time-grunt')(grunt)
+
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-less"
   grunt.loadNpmTasks "grunt-contrib-watch"
