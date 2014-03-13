@@ -69,6 +69,10 @@ module.exports = (grunt) ->
         expand: true
         src: "js/**"
         dest: "dist/"
+      php:
+        expand: true
+        src: "functions/**"
+        dest: "dist/"
       bower:
         expand: true
         src: "bower_components/**"
@@ -144,9 +148,9 @@ module.exports = (grunt) ->
   grunt.registerTask "build", [
     "newer:concat"
     "less"
-    "coffee"
+    "newer:coffee"
     "cssmin"
-    "uglify"
+    "newer:uglify"
   ]
 
   # Build and watch for changes
@@ -157,10 +161,12 @@ module.exports = (grunt) ->
 
   # Build the distribuition folder
   grunt.registerTask "dist", [
+    "build"
     "newer:copy:html"
     "newer:copy:img"
     "newer:copy:css"
     "newer:copy:js"
+    "newer:copy:php"
     "newer:copy:bower"
     "newer:copy:bootstrapSP"
     "newer:copy:bootstrapTOT"
