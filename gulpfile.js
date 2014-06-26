@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
-var path = require('path');
 var rename = require('gulp-rename');
 var coffee = require('gulp-coffee');
 var concat = require('gulp-concat');
