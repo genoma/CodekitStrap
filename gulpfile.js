@@ -7,10 +7,10 @@ var concat = require('gulp-concat');
 var uncss = require('gulp-uncss');
 var minifycss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
-var clean = require('gulp-clean');
 var replace = require('gulp-replace');
 var browserSync = require('browser-sync');
 var changed = require('gulp-changed');
+var rimraf = require('gulp-rimraf');
 
 gulp.task('coffee', function() {
     var stream = gulp.src('./coffeescript/*.coffee')
@@ -80,9 +80,10 @@ gulp.task('build-index', function() {
 
 
 gulp.task('clean', function() {
-  return gulp.src(['./dist/*'], { read:false })
-  .pipe(clean());
+  return gulp.src('dist', { read: false })
+    .pipe(rimraf());
 });
+
 
 gulp.task('move', ['clean'], function() {
   var stream = gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html'], { base: './' })
