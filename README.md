@@ -1,5 +1,5 @@
-bootstrap-configuration
-=======================
+bootstrap-configuration with GULP!
+==================================
 
 Front end development configuration with Bootstrap as a git module, Gulp configuration for main project with Less, CoffeeScript support, templating support.
 
