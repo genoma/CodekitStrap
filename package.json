@@ -1,20 +1,36 @@
 {
-  "name": "bootstrap-test",
+  "name": "bootstrap-configuration",
   "version": "0.0.0",
-  "description": "",
-  "main": "Gruntfile.js",
-  "dependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-less": "~0.10.0",
-    "time-grunt": "^0.2.10"
+  "description": "bootstrap-configuration =======================",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/genoma/bootstrap-configuration.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/genoma/bootstrap-configuration/issues"
+  },
+  "homepage": "https://github.com/genoma/bootstrap-configuration",
   "devDependencies": {
-    "grunt-contrib-coffee": "^0.10.1",
-    "grunt-contrib-watch": "^0.5.3",
-    "grunt-newer": "^0.6.1",
-    "grunt-contrib-uglify": "^0.4.0",
-    "grunt-contrib-cssmin": "^0.9.0",
-    "grunt-contrib-copy": "^0.5.0",
-    "grunt-contrib-concat": "^0.3.0"
+    "browser-sync": "^1.1.1",
+    "gulp": "^3.8.2",
+    "gulp-changed": "^0.4.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-coffee": "^2.0.1",
+    "gulp-compressor": "^0.1.0",
+    "gulp-concat": "^2.2.0",
+    "gulp-less": "^1.2.4",
+    "gulp-minify-css": "^0.3.5",
+    "gulp-plumber": "^0.6.3",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.3.0",
+    "gulp-uglify": "^0.3.1",
+    "gulp-uncss": "^0.4.4",
+    "gulp-watch": "^0.6.8"
   }
 }
