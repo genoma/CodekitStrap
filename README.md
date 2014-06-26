@@ -1,22 +1,18 @@
 bootstrap-configuration
 =======================
 
-Front end development configuration with Bootstrap as a git module, Grunt configuration for main project with Less, CoffeeScript support, templating support.
+Front end development configuration with Bootstrap as a git module, Gulp configuration for main project with Less, CoffeeScript support, templating support.
 
-## Grunt Tasks
+## Gulp Tasks
 
-### `$ grunt prepare`
+### `$ gulp`
 
-When a **Bootstrap** update is downloaded, the _prepare_ task copies all the relevant file into the main development folder.
+Watches files and compiles relevant less, coffeescript and html, push in a web server with browser-sync.
 
-### `$ grunt build`
+### `$ gulp build`
 
-Build the current development files (html, css, jscript).
+Minify and clean css and js files.
 
-### `$ grunt`
+### `$ gulp dist`
 
-Check for relevant changes in the **Less**, **CoffeeScript** and **HTML** files and consequently compile them.
-
-### `$ grunt dist`
-
-Copy the relevant files into the `dist/` folder, ready to be published.
+Place in a dist folder only relevant files, html, js, css and  changes references to minified js and css.
