@@ -11,6 +11,7 @@ var browserSync = require('browser-sync');
 var changed = require('gulp-changed');
 var rimraf = require('gulp-rimraf');
 
+// compile CoffeeScript
 gulp.task('coffee', function() {
     var stream = gulp.src('./coffeescript/*.coffee')
     .pipe(changed('./coffeescript/*.coffee'))
@@ -21,6 +22,7 @@ gulp.task('coffee', function() {
     return stream;
 });
 
+// compile your custom plugins in CoffeeScript
 gulp.task('coffee-plugins', function() {
   var stream = gulp.src('./p_coffeescript/*.coffee')
     .pipe(changed('./p_coffeescript/*.coffee'))
@@ -30,6 +32,7 @@ gulp.task('coffee-plugins', function() {
     return stream;
 });
 
+// Compile your less files
 gulp.task('less', function () {
   var stream = gulp.src('./less/global.less')
     .pipe(changed('./less/**/*.*'))
@@ -40,6 +43,7 @@ gulp.task('less', function () {
     return stream;
 });
 
+// Clean CSS from unused classes
 gulp.task('clean-css', function(cb) {
   gulp.src('./css/app.css')
   .pipe(uncss({
@@ -49,6 +53,7 @@ gulp.task('clean-css', function(cb) {
   cb();
 });
 
+// Minify CSS file
 gulp.task('minify-css', ['clean-css'], function() {
     var stream = gulp.src('./css/app.css')
       .pipe(minifycss())
@@ -57,6 +62,7 @@ gulp.task('minify-css', ['clean-css'], function() {
     return stream;
 });
 
+// Minify your main javascript file
 gulp.task('compress-js', function() {
     var stream = gulp.src('./js/app.js')
     .pipe(uglify())
@@ -65,31 +71,42 @@ gulp.task('compress-js', function() {
     return stream;
 });
 
-
+// Create a variable array with all the files needed by your webpages, in this case the index
 var htmlFilesIndex = ['./templates/base/meta/index.html', './templates/base/header.html', './templates/index.html', './templates/base/footer.html'];
 
-gulp.task('build-index', function() {
-    var stream = gulp.src(htmlFilesIndex)
+// this is an ideal about page which is made with the global header, footer, a custom content and a custom meta html
+// var htmlFilesAbout = ['./templates/base/meta/about.html', './templates/base/header.html', './templates/index.html', './templates/base/footer.html'];
+
+// build pages with provided files
+gulp.task('build', function() {
+    gulp.src(htmlFilesIndex)
     .pipe(changed('./templates/*.html'))
     .pipe(concat('index.html'))
     .pipe(gulp.dest('./'))
     .pipe(browserSync.reload({stream:true}));
-  return stream;
+
+    // gulp.src(yourHtmlFiles)
+    // .pipe(changed('./templates/*.html'))
+    // .pipe(concat('about.html'))
+    // .pipe(gulp.dest('./'))
+    // .pipe(browserSync.reload({stream:true}));
 });
 
-
+// clean the dist folder
 gulp.task('clean', function() {
   return gulp.src('dist', { read: false })
     .pipe(rimraf());
 });
 
-
+// Move the needed files and folders into a dist folder which can be deployed to the webserver
 gulp.task('move', ['clean'], function() {
   var stream = gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html'], { base: './' })
   .pipe(gulp.dest('dist'));
   return stream;
 });
 
+// Modify into the dist folder the html files
+// to use the minified CSS and JS sources
 gulp.task('dist-changes', ['move'], function() {
   var stream = gulp.src(['./dist/*.html'])
   .pipe(replace('app.css', 'app.min.css'))
@@ -99,6 +116,8 @@ gulp.task('dist-changes', ['move'], function() {
   return stream;
 });
 
+// browser-sync serve the work to
+// your browser of choice
 gulp.task('browser-sync', function() {
     browserSync.init(null, {
       server: {
@@ -108,6 +127,7 @@ gulp.task('browser-sync', function() {
 });
 
 
+// Final tasks
 gulp.task('dist', ['dist-changes']);
 
 gulp.task('build', ['minify-css', 'compress-js']);
