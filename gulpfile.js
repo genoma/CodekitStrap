@@ -90,7 +90,7 @@ gulp.task('move', ['clean'], function() {
   return stream;
 });
 
-gulp.task('dist-changes', function() {
+gulp.task('dist-changes', ['move'], function() {
   var stream = gulp.src(['./dist/*.html'])
   .pipe(replace('app.css', 'app.min.css'))
   .pipe(gulp.dest('dist/'))
@@ -108,7 +108,7 @@ gulp.task('browser-sync', function() {
 });
 
 
-gulp.task('dist', ['move', 'dist-changes']);
+gulp.task('dist', ['dist-changes']);
 
 gulp.task('build', ['minify-css', 'compress-js']);
 
