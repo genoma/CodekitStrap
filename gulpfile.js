@@ -44,17 +44,17 @@ gulp.task('less', function () {
 });
 
 // Clean CSS from unused classes
-gulp.task('clean-css', function(cb) {
-  gulp.src('./css/app.css')
-  .pipe(uncss({
-    html: ['index.html']
-  }))
-  .pipe(gulp.dest('./css/'));
-  cb();
-});
+// gulp.task('clean-css', function(cb) {
+//   gulp.src('./css/app.css')
+//   .pipe(uncss({
+//     html: ['index.html']
+//   }))
+//   .pipe(gulp.dest('./css/'));
+//   cb();
+// });
 
 // Minify CSS file
-gulp.task('minify-css', ['clean-css'], function() {
+gulp.task('minify-css', function() {
     var stream = gulp.src('./css/app.css')
       .pipe(minifycss())
       .pipe(rename('app.min.css'))
@@ -78,7 +78,7 @@ var htmlFilesIndex = ['./templates/base/meta/index.html', './templates/base/head
 // var htmlFilesAbout = ['./templates/base/meta/about.html', './templates/base/header.html', './templates/index.html', './templates/base/footer.html'];
 
 // build pages with provided files
-gulp.task('build', function() {
+gulp.task('build-html', function() {
     gulp.src(htmlFilesIndex)
     .pipe(changed('./templates/*.html'))
     .pipe(concat('index.html'))
@@ -136,5 +136,5 @@ gulp.task('default', ['browser-sync'], function() {
   gulp.watch('./coffeescript/*.coffee', ['coffee'])
   gulp.watch('./p_coffeescript/*.coffee', ['coffee-plugins'])
   gulp.watch('./less/*.less', ['less'])
-  gulp.watch('./templates/**/*.*', ['build-index'])
+  gulp.watch('./templates/**/*.*', ['build-html'])
 });
