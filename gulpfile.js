@@ -3,7 +3,6 @@ var less = require('gulp-less');
 var rename = require('gulp-rename');
 var coffee = require('gulp-coffee');
 var concat = require('gulp-concat');
-var uncss = require('gulp-uncss');
 var minifycss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var replace = require('gulp-replace');
@@ -42,21 +41,6 @@ gulp.task('less', function () {
     .pipe(browserSync.reload({stream:true}));
     return stream;
 });
-
-// Clean CSS from unused classes --> This doesnt work with
-// classes added dinamically with js and so
-// it doesn't work with Bootstrap js and with any
-// plugin/js that you probably should use in web
-// development.
-//
-// gulp.task('clean-css', function(cb) {
-//   gulp.src('./css/app.css')
-//   .pipe(uncss({
-//     html: ['index.html']
-//   }))
-//   .pipe(gulp.dest('./css/'));
-//   cb();
-// });
 
 // Minify CSS file
 gulp.task('minify-css', function() {
