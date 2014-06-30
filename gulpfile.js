@@ -43,7 +43,12 @@ gulp.task('less', function () {
     return stream;
 });
 
-// Clean CSS from unused classes
+// Clean CSS from unused classes --> This doesnt work with
+// classes added dinamically with js and so
+// it doesn't work with Bootstrap js and with any
+// plugin/js that you probably should use in web
+// development.
+//
 // gulp.task('clean-css', function(cb) {
 //   gulp.src('./css/app.css')
 //   .pipe(uncss({
@@ -133,8 +138,8 @@ gulp.task('dist', ['dist-changes']);
 gulp.task('build', ['minify-css', 'compress-js']);
 
 gulp.task('default', ['browser-sync'], function() {
-  gulp.watch('./coffeescript/*.coffee', ['coffee'])
-  gulp.watch('./p_coffeescript/*.coffee', ['coffee-plugins'])
-  gulp.watch('./less/*.less', ['less'])
-  gulp.watch('./templates/**/*.*', ['build-html'])
+  gulp.watch('./coffeescript/*.coffee', ['coffee']);
+  gulp.watch('./p_coffeescript/*.coffee', ['coffee-plugins']);
+  gulp.watch('./less/*.less', ['less']);
+  gulp.watch('./templates/**/*.*', ['build-html']);
 });

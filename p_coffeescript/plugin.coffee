@@ -1,3 +1,8 @@
+# A base for jQuery plugins
+# in CoffeeScript.
+
+
+
 # Reference jQuery
 $ = jQuery
 

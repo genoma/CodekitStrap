@@ -11,7 +11,7 @@ Watches files and compiles relevant Less, CoffeeScript and HTML and use Browser-
 
 ### `$ gulp build`
 
-Minify and clean Css and Js files.
+Minify Css and Js files.
 
 ### `$ gulp dist`
 
