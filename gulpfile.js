@@ -9,10 +9,20 @@ var replace = require('gulp-replace');
 var browserSync = require('browser-sync');
 var changed = require('gulp-changed');
 var rimraf = require('gulp-rimraf');
+var plumber = require('gulp-plumber');
+var gutil = require('gulp-util');
+
+var onError = function (err) {
+  gutil.beep();
+  console.log(err);
+};
 
 // compile CoffeeScript
 gulp.task('coffee', function() {
     var stream = gulp.src('./coffeescript/*.coffee')
+    .pipe(plumber({
+      errorHandler: onError
+    }))
     .pipe(changed('./coffeescript/*.coffee'))
     .pipe(coffee())
     .pipe(concat('app.js'))
@@ -24,6 +34,7 @@ gulp.task('coffee', function() {
 // compile your custom plugins in CoffeeScript
 gulp.task('coffee-plugins', function() {
   var stream = gulp.src('./p_coffeescript/*.coffee')
+    .pipe(plumber())
     .pipe(changed('./p_coffeescript/*.coffee'))
     .pipe(coffee())
     .pipe(gulp.dest('./js/plugins/'))
@@ -34,6 +45,7 @@ gulp.task('coffee-plugins', function() {
 // Compile your less files
 gulp.task('less', function () {
   var stream = gulp.src('./less/global.less')
+    .pipe(plumber())
     .pipe(changed('./less/**/*.*'))
     .pipe(less())
     .pipe(rename('app.css'))
