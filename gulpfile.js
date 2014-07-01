@@ -101,7 +101,7 @@ gulp.task('clean', function() {
 
 // Move the needed files and folders into a dist folder which can be deployed to the webserver
 gulp.task('move', ['clean'], function() {
-  var stream = gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html'], { base: './' })
+  var stream = gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html', './images/**/*.*'], { base: './' })
   .pipe(gulp.dest('dist'));
   return stream;
 });
