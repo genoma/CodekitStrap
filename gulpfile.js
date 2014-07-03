@@ -11,6 +11,7 @@ var changed = require('gulp-changed');
 var rimraf = require('gulp-rimraf');
 var plumber = require('gulp-plumber');
 var gutil = require('gulp-util');
+var prefix = require('gulp-autoprefixer');
 
 var onError = function (err) {
   gutil.beep();
@@ -48,7 +49,7 @@ gulp.task('less', function () {
     .pipe(plumber())
     .pipe(changed('./less/**/*.*'))
     .pipe(less())
-    .pipe(rename('app.css'))
+    .pipe(rename('app.pre.css'))
     .pipe(gulp.dest('./css/'))
     .pipe(browserSync.reload({stream:true}));
     return stream;
@@ -70,6 +71,15 @@ gulp.task('compress-js', function() {
     .pipe(rename('app.min.js'))
     .pipe(gulp.dest('./js/'));
     return stream;
+});
+
+// Auto prexix
+gulp.task('prefixer', ['less'], function() {
+  gulp.src('./css/app.pre.css')
+  .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
+  .pipe(rename('app.css'))
+  .pipe(gulp.dest('./css/'))
+  .pipe(browserSync.reload({stream:true}));
 });
 
 // Create a variable array with all the files needed by your webpages, in this case the index
@@ -119,12 +129,12 @@ gulp.task('dist-changes', ['move'], function() {
 
 // browser-sync serve the work to
 // your browser of choice
-gulp.task('browser-sync', function() {
-    browserSync.init(null, {
-      server: {
-        baseDir: "./"
-      }
-    });
+gulp.task('browser-sync', ['coffee', 'coffee-plugins', 'prefixer', 'build-html'], function() {
+  browserSync.init(null, {
+    server: {
+      baseDir: "./"
+    }
+  });
 });
 
 
@@ -136,6 +146,6 @@ gulp.task('build', ['minify-css', 'compress-js']);
 gulp.task('default', ['browser-sync'], function() {
   gulp.watch('./coffeescript/*.coffee', ['coffee']);
   gulp.watch('./p_coffeescript/*.coffee', ['coffee-plugins']);
-  gulp.watch('./less/*.less', ['less']);
+  gulp.watch('./less/*.less', ['prefixer']);
   gulp.watch('./templates/**/*.*', ['build-html']);
 });
