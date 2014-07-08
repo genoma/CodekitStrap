@@ -12,6 +12,7 @@ var rimraf = require('gulp-rimraf');
 var plumber = require('gulp-plumber');
 var gutil = require('gulp-util');
 var prefix = require('gulp-autoprefixer');
+var flatten = require('gulp-flatten');
 
 var onError = function (err) {
   gutil.beep();
@@ -111,7 +112,7 @@ gulp.task('clean', function() {
 
 // Move the needed files and folders into a dist folder which can be deployed to the webserver
 gulp.task('move', ['clean'], function() {
-  var stream = gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html', './images/**/*.*'], { base: './' })
+  var stream = gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html', './images/**/*.*', './fonts/**/*.*'], { base: './' })
   .pipe(gulp.dest('dist'));
   return stream;
 });
@@ -137,6 +138,20 @@ gulp.task('browser-sync', ['coffee', 'coffee-plugins', 'prefixer', 'build-html']
   });
 });
 
+// move fonts from bootstrap and
+// font awesome to website ./fonts
+
+gulp.task('cleanfonts', function() {
+  return gulp.src('fonts', { read: false })
+    .pipe(rimraf());
+});
+
+gulp.task('fonts', ['cleanfonts'], function() {
+  var stream = gulp.src(['./bower_components/font-awesome/fonts/**/*.*', './bootstrap/fonts/**/*.*'], { base: './' })
+  .pipe(flatten())
+  .pipe(gulp.dest('./fonts'));
+  return stream;
+});
 
 // Final tasks
 gulp.task('dist', ['dist-changes']);
