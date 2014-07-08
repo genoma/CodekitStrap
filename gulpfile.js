@@ -49,7 +49,7 @@ gulp.task('less', function () {
     .pipe(plumber())
     .pipe(changed('./less/**/*.*'))
     .pipe(less())
-    .pipe(rename('app.pre.css'))
+    .pipe(rename('app.css'))
     .pipe(gulp.dest('./css/'))
     .pipe(browserSync.reload({stream:true}));
     return stream;
