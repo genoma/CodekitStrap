@@ -59,7 +59,7 @@ gulp.task('less', function () {
 // Minify CSS file
 gulp.task('minify-css', function() {
     var stream = gulp.src('./css/app.css')
-      .pipe(minifycss())
+      .pipe(minifycss({keepSpecialComments: false, noAdvanced: true}))
       .pipe(rename('app.min.css'))
       .pipe(gulp.dest('./css/'));
     return stream;
