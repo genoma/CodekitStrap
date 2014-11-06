@@ -1,3 +1,7 @@
+// TODO: provide a shrink task to minimize both js
+// and CSS. Change rimraf with https://www.npmjs.org/package/del
+// Provide a single js for Angular controller.js
+
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var sourcemaps = require('gulp-sourcemaps');
