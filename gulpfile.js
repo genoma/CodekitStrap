@@ -10,42 +10,42 @@ function handleError(err) {
 
 // compile CoffeeScrip    t
 gulp.task('coffee', function() {
-    var stream = gulp.src('/coffeescript/*.coffee')
+    var stream = gulp.src('./coffeescript/*.coffee')
     .pipe(sourcemaps.init())
-    .pipe($.changed('/coffeescript/*.coffee'))
-    .pipe($.coffee())
-    .pipe($.uglify())
-    .pipe(sourcemaps.write())
+    .pipe($.changed('./coffeescript/*.coffee'))
+    .pipe($.coffee({bare: true}))
+    // .pipe($.uglify())
     .pipe($.concat('app.js'))
-    .pipe(gulp.dest('/js/'))
+    .pipe(sourcemaps.write('../js/'))
+    .pipe(gulp.dest('./js/'))
     .pipe(browserSync.reload({stream:true}));
     return stream;
 });
 
 // compile your custom plugins in CoffeeScript
 gulp.task('coffee-plugins', function() {
-  var stream = gulp.src('/p_coffeescript/*.coffee')
+  var stream = gulp.src('./p_coffeescript/*.coffee')
     .pipe(sourcemaps.init())
-    .pipe($.changed('/p_coffeescript/*.coffee'))
-    .pipe($.coffee())
-    .pipe($.uglify())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('/js/plugins/'))
+    .pipe($.changed('./p_coffeescript/*.coffee'))
+    .pipe($.coffee({bare: true}))
+    // .pipe($.uglify())
+    .pipe(sourcemaps.write('../plugins/'))
+    .pipe(gulp.dest('./js/plugins/'))
     .pipe(browserSync.reload({stream:true}));
     return stream;
 });
 
 // Compile your less files
 gulp.task('less', function() {
-  var stream = gulp.src('/less/global.less')
+  var stream = gulp.src('./less/global.less')
     .pipe(sourcemaps.init())
-    .pipe($.changed('/less/**/*.*'))
+    .pipe($.changed('./less/**/*.*'))
     .pipe($.less()).on('error', handleError)
     .pipe($.autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
-    .pipe($.minifyCss())
-    .pipe(sourcemaps.write())
+    // .pipe($.minifyCss())
     .pipe($.rename('app.css'))
-    .pipe(gulp.dest('/css/'))
+    .pipe(sourcemaps.write('../css'))
+    .pipe(gulp.dest('./css/'))
     .pipe(browserSync.reload({stream:true}))
     return stream;
 });

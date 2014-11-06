@@ -1,2 +1,24 @@
-(function(){$(function(){return console.log("G")})}).call(this);
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uY29mZmVlIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJDQUFBLFdBQUEsRUFBRSxpQkFDQSxTQUFRLElBQUkiLCJmaWxlIjoibWFpbi5qcyIsInNvdXJjZXNDb250ZW50IjpbIiQgLT5cbiAgY29uc29sZS5sb2cgXCJHXCJcbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+var phonecatApp;
+
+phonecatApp = angular.module("phonecatApp", []);
+
+phonecatApp.controller("PhoneListCtrl", function($scope) {
+  $scope.phones = [
+    {
+      name: "Nexus S",
+      snippet: "Fast just got faster with Nexus S."
+    }, {
+      name: "Motorola XOOM™ with Wi-Fi",
+      snippet: "The Next, Next Generation tablet."
+    }, {
+      name: "MOTOROLA XOOM™",
+      snippet: "The Next, Next Generation tablet."
+    }
+  ];
+});
+
+$(function() {
+  return console.log("G");
+});
+
+//# sourceMappingURL=../js/app.js.map
