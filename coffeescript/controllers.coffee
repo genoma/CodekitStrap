@@ -1,17 +1,10 @@
-phonecatApp = angular.module("phonecatApp", [])
-phonecatApp.controller "PhoneListCtrl", ($scope) ->
-  $scope.phones = [
+gulpStrap = angular.module("testApp", [])
+
+gulpStrap.controller "Head", ($scope) ->
+  $scope.header = [
     {
-      name: "Nexus S"
-      snippet: "Fast just got faster with Nexus S."
-    }
-    {
-      name: "Motorola XOOM™ with Wi-Fi"
-      snippet: "The Next, Next Generation tablet."
-    }
-    {
-      name: "MOTOROLA XOOM™"
-      snippet: "The Next, Next Generation tablet."
+      title: "HEADER"
+      snippet: "this is an header"
     }
   ]
   return

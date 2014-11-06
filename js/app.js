@@ -1,18 +1,12 @@
-var phonecatApp;
+var gulpStrap;
 
-phonecatApp = angular.module("phonecatApp", []);
+gulpStrap = angular.module("testApp", []);
 
-phonecatApp.controller("PhoneListCtrl", function($scope) {
-  $scope.phones = [
+gulpStrap.controller("Head", function($scope) {
+  $scope.header = [
     {
-      name: "Nexus S",
-      snippet: "Fast just got faster with Nexus S."
-    }, {
-      name: "Motorola XOOM™ with Wi-Fi",
-      snippet: "The Next, Next Generation tablet."
-    }, {
-      name: "MOTOROLA XOOM™",
-      snippet: "The Next, Next Generation tablet."
+      title: "HEADER",
+      snippet: "this is an header"
     }
   ];
 });

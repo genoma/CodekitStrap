@@ -1,8 +1,14 @@
-<div class="container">
+<div class="container" ng-controller="Head">
   <div class="row">
     <div class="col-md-12">
       <div class="jumbotron">
-        <h1>HEADER</h1>
+
+        <div ng-repeat="words in header">
+
+          <h1>{{words.title}}</h1>
+          <p>i{{words.snippet}}</p>
+
+        </div>
       </div>
     </div>
   </div>
