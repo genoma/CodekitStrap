@@ -1,6 +1,8 @@
 // TODO: provide a shrink task to minimize both js
 // and CSS. Change rimraf with https://www.npmjs.org/package/del
 // Provide a single js for Angular controller.js
+// Fix less compiler behaviour with something better than
+// handleError(err) function.
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
