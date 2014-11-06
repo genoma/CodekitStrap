@@ -1,18 +1,35 @@
-bootstrap-configuration with GULP!
-==================================
+[Bootstrap](http://getbootstrap.com/) as a __Git submodule__ plus [Bower](http://bower.io/) and [Gulp](http://gulpjs.com/)!
+===========================================================================================================================
 
-Front end development configuration with Bootstrap as a Git module, Gulp configuration for main project with Less, CoffeeScript and a basic template management to support splitting of header, footer and content (conceptually still a work in progress).
+A pretty smart frontend complete tool to develop faster and better, fully extensible with Bower (contains Angular, jQuery), easily deployable with Gulp (support for Less, Coffeescript, Sourcemaps) and integrated with [BrowserSync](http://www.browsersync.io/).
 
-## Gulp Tasks
+## Howto
 
-### `$ gulp`
+`$ gulp` launch gulp from terminal to compile, preview and work on your web app.
 
-Watches files and compiles relevant Less, CoffeeScript and HTML and use Browser-Sync to push everything to your browser of choice.
+`$ gulp build` put relevant files into the dist folder to deploy your work.
 
-### `$ gulp build`
+## Contributing
 
-Minify Css and Js files.
+Any sort of contribution is more than welcome, just fork the project and add your own fixes or improvements.
 
-### `$ gulp dist`
+## MIT LICENSE
+Copyright (c) 2014 Alessandro Vioni
 
-Place in a dist folder only relevant files, html, Js, CSS and  changes references to the minified version of your Javascript and CSS.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

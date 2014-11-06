@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +11,12 @@
 
 <!-- Personal CSS + minified  -->
 <link href="css/app.css" rel="stylesheet">
-<!-- <link href="css/app.min.css" rel="stylesheet"> -->
 
 </head>
 
   <body role="document">
+
+    <ng-include src="'templates/header.html'"></ng-include>
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -23,7 +24,6 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
@@ -360,10 +360,14 @@
 
     </div> <!-- /container -->
 
+
+    <ng-include src="'templates/footer.html'"></ng-include>
+
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 <!-- Personal Javascript + minified  -->

@@ -39,6 +39,7 @@ Thumbs.db
 
 # Project files #
 #################
+bower_components
 node_modules
 dist
 fonts

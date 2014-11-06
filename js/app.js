@@ -1,6 +1,2 @@
-(function() {
-  $(function() {
-    return console.log("G");
-  });
-
-}).call(this);
+(function(){$(function(){return console.log("G")})}).call(this);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uY29mZmVlIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJDQUFBLFdBQUEsRUFBRSxpQkFDQSxTQUFRLElBQUkiLCJmaWxlIjoibWFpbi5qcyIsInNvdXJjZXNDb250ZW50IjpbIiQgLT5cbiAgY29uc29sZS5sb2cgXCJHXCJcbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
