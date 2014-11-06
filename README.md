@@ -3,6 +3,10 @@
 
 A pretty smart frontend complete tool to develop faster and better, fully extensible with Bower (contains Angular, jQuery), easily deployable with Gulp (support for Less, Coffeescript, Sourcemaps) and integrated with [BrowserSync](http://www.browsersync.io/).
 
+## BETA
+
+This framework is currently in a *beta* stage.
+
 ## Howto
 
 `$ gulp` launch gulp from terminal to compile, preview and work on your web app.
