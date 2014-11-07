@@ -22,7 +22,7 @@ gulp.task('coffee', function() {
     .pipe($.coffee({bare: true}))
     // .pipe($.uglify())
     .pipe($.concat('app.js'))
-    .pipe(sourcemaps.write('../js/'))
+    .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('./js/'))
     .pipe(browserSync.reload({stream:true}));
     return stream;
@@ -35,7 +35,7 @@ gulp.task('coffee-plugins', function() {
     .pipe($.changed('./p_coffeescript/*.coffee'))
     .pipe($.coffee({bare: true}))
     // .pipe($.uglify())
-    .pipe(sourcemaps.write('../plugins/'))
+    .pipe(sourcemaps.write('../../maps'))
     .pipe(gulp.dest('./js/plugins/'))
     .pipe(browserSync.reload({stream:true}));
     return stream;
@@ -50,7 +50,7 @@ gulp.task('less', function() {
     .pipe($.autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
     // .pipe($.minifyCss())
     .pipe($.rename('app.css'))
-    .pipe(sourcemaps.write('../css'))
+    .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('./css/'))
     .pipe(browserSync.reload({stream:true}))
     return stream;
