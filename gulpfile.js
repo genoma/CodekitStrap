@@ -1,12 +1,11 @@
-// TODO: Change rimraf with https://www.npmjs.org/package/del
-// Provide a single js for Angular controller.js
-// Fix less compiler behaviour with something better than
+// TODO: Fix less compiler behaviour with something better than
 // handleError(err) function.
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
+var del = require('del');
 
 function handleError(err) {
   console.log(err.toString());
@@ -56,13 +55,18 @@ gulp.task('less', function() {
 });
 
 // clean the dist folder
+// gulp.task('clean', function() {
+//   return gulp.src('dist', { read: false })
+//     .pipe($.rimraf());
+// });
+
 gulp.task('clean', function() {
-  return gulp.src('dist', { read: false })
-    .pipe($.rimraf());
+   return del(['dist/*']);
 });
 
+
 // Move the needed files and folders into a dist folder which can be deployed to the webserver
-gulp.task('move', ['clean'], function() {
+gulp.task('move', ['clean', 'minify'], function() {
   var stream = gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html', './images/**/*.*', './.htaccess'], { base: './' })
   .pipe(gulp.dest('dist'));
   return stream;
