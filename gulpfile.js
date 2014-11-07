@@ -32,7 +32,6 @@ gulp.task('coffee-plugins', function() {
     .pipe(sourcemaps.init())
     .pipe($.changed('./p_coffeescript/*.coffee'))
     .pipe($.coffee({bare: true}))
-    // .pipe($.uglify())
     .pipe(sourcemaps.write('../../maps'))
     .pipe(gulp.dest('./js/plugins/'))
     .pipe(browserSync.reload({stream:true}));
@@ -46,7 +45,6 @@ gulp.task('less', function() {
     .pipe($.changed('./less/**/*.*'))
     .pipe($.less()).on('error', handleError)
     .pipe($.autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
-    // .pipe($.minifyCss())
     .pipe($.rename('app.css'))
     .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('./css/'))
@@ -54,16 +52,10 @@ gulp.task('less', function() {
     return stream;
 });
 
-// clean the dist folder
-// gulp.task('clean', function() {
-//   return gulp.src('dist', { read: false })
-//     .pipe($.rimraf());
-// });
-
+// Clean the dist folder
 gulp.task('clean', function() {
    return del(['dist/*']);
 });
-
 
 // Move the needed files and folders into a dist folder which can be deployed to the webserver
 gulp.task('move', ['clean', 'minify'], function() {
@@ -94,9 +86,7 @@ gulp.task('browser-sync', ['coffee', 'coffee-plugins', 'less'], function() {
 // FINAL TASKS
 //
 
-// Minify and Uglify, to be used before
-// dist
-
+// Minify and Uglify
 gulp.task('minify', function() {
   gulp.src('./css/app.css')
     .pipe($.minifyCss())
