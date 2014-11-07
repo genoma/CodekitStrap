@@ -56,8 +56,6 @@ gulp.task('less', function() {
     return stream;
 });
 
-
-
 // clean the dist folder
 gulp.task('clean', function() {
   return gulp.src('dist', { read: false })
@@ -70,8 +68,6 @@ gulp.task('move', ['clean'], function() {
   .pipe(gulp.dest('dist'));
   return stream;
 });
-
-
 
 // browser-sync serve the work to
 // your browser of choice
@@ -90,7 +86,22 @@ gulp.task('browser-sync', ['coffee', 'coffee-plugins', 'less'], function() {
 });
 
 
-// Final tasks
+
+//
+// FINAL TASKS
+//
+
+// Minify and Uglify, to be used before
+// dist
+
+gulp.task('minify', function() {
+  gulp.src('./css/app.css')
+    .pipe($.minifyCss())
+    .pipe(gulp.dest('./css'));
+  gulp.src('./js/app.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('./js/'))
+});
 
 gulp.task('build', ['move']);
 
