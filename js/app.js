@@ -15,4 +15,4 @@ $(function() {
   return console.log("G");
 });
 
-//# sourceMappingURL=../js/app.js.map
+//# sourceMappingURL=../maps/app.js.map

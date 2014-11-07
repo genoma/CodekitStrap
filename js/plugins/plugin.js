@@ -23,4 +23,4 @@ $.fn.extend({
   }
 });
 
-//# sourceMappingURL=../plugins/plugin.js.map
+//# sourceMappingURL=../../maps/plugin.js.map
