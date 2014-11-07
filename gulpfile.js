@@ -106,7 +106,7 @@ gulp.task('minify', function() {
     .pipe(gulp.dest('./js/'))
 });
 
-gulp.task('build', ['move']);
+gulp.task('dist', ['move']);
 
 gulp.task('default', ['browser-sync'], function() {
   gulp.watch('./coffeescript/*.coffee', ['coffee']);

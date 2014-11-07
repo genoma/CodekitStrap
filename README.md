@@ -13,7 +13,7 @@ This framework is currently in a *beta* stage.
 
 `$ gulp minify` minify and ugilfy respectively css and javascript.
 
-`$ gulp build` put relevant files into the dist folder to deploy your work.
+`$ gulp dist` put relevant files into the dist folder to deploy your work.
 
 ## Contributing
 
