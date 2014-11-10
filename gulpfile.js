@@ -14,42 +14,39 @@ function handleError(err) {
 
 // compile CoffeeScrip    t
 gulp.task('coffee', function() {
-    var stream = gulp.src('./coffeescript/*.coffee')
+    gulp.src('./coffeescript/*.coffee')
     .pipe(sourcemaps.init())
     .pipe($.changed('./coffeescript/*.coffee'))
-    .pipe($.coffee({bare: true}))
+    .pipe($.coffee({bare: true})).on('error', $.util.log)
     // .pipe($.uglify())
     .pipe($.concat('app.js'))
     .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('./js/'))
     .pipe(browserSync.reload({stream:true}));
-    return stream;
 });
 
 // compile your custom plugins in CoffeeScript
 gulp.task('coffee-plugins', function() {
-  var stream = gulp.src('./p_coffeescript/*.coffee')
+    gulp.src('./p_coffeescript/*.coffee')
     .pipe(sourcemaps.init())
     .pipe($.changed('./p_coffeescript/*.coffee'))
-    .pipe($.coffee({bare: true}))
+    .pipe($.coffee({bare: true})).on('error', $.util.log)
     .pipe(sourcemaps.write('../../maps'))
     .pipe(gulp.dest('./js/plugins/'))
     .pipe(browserSync.reload({stream:true}));
-    return stream;
 });
 
 // Compile your less files
 gulp.task('less', function() {
-  var stream = gulp.src('./less/global.less')
+    gulp.src('./less/global.less')
     .pipe(sourcemaps.init())
     .pipe($.changed('./less/**/*.*'))
-    .pipe($.less()).on('error', handleError)
+    .pipe($.less()).on('error', $.util.log)
     .pipe($.autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
     .pipe($.rename('app.css'))
     .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('./css/'))
     .pipe(browserSync.reload({stream:true}))
-    return stream;
 });
 
 // Clean the dist folder
