@@ -7,6 +7,10 @@ A pretty smart frontend complete tool to develop faster and better, fully extens
 
 This framework is currently in a *beta* stage.
 
+## Install
+
+Clone the repo, add your branch and your own remote and you're pretty much ready to develop your own web app.
+
 ## Howto
 
 `$ gulp` launch gulp from terminal to compile, preview and work on your web app.
