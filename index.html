@@ -16,7 +16,6 @@
 
   <body role="document">
 
-    <ng-include src="'templates/header.html'"></ng-include>
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -48,6 +47,20 @@
             </li>
           </ul>
         </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+    <ng-include src="'templates/header.html'"></ng-include>
+
+    <div class="container theme-showcase">
+      <!-- visualization Angular data -->
+      <div class="jumbotron" ng-controller="test">
+        <div>
+          <h1>BTC value</h1>
+          <h2><span ng-repeat="data in btc">{{data.EUR.rate}}</span> EURO</h2>
+          <h2><span ng-repeat="data in btc">{{data.USD.rate}}</span> DOLLARI</h2>
+        </div>
       </div>
     </div>
 
