@@ -56,9 +56,8 @@ gulp.task('clean', function() {
 
 // Move the needed files and folders into a dist folder which can be deployed to the webserver
 gulp.task('move', ['clean', 'minify'], function() {
-  var stream = gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html', './images/**/*.*', './.htaccess'], { base: './' })
+  gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html', './images/**/*.*', './.htaccess'], { base: './' })
   .pipe(gulp.dest('dist'));
-  return stream;
 });
 
 // browser-sync serve the work to
@@ -83,6 +82,24 @@ gulp.task('browser-sync', ['coffee', 'coffee-plugins', 'less'], function() {
 // FINAL TASKS
 //
 
+// PREPARE THE PROJECT AFTER A
+// BOOTSTRAP SUBMODULE UPDATE
+
+// Copy everything from Bootstrap to
+// root JS folder
+gulp.task('pre-prepare', function() {
+  gulp.src(['./bootstrap/js/**/*.*/'], {base: './bootstrap/js'})
+  .pipe(gulp.dest('js'))
+});
+
+// Delete the tests folder
+gulp.task('post-prepare', function() {
+  return del(['js/tests']);
+});
+
+// Assemble the final task
+gulp.task('prepare', ['pre-prepare', 'post-prepare']);
+
 // Minify and Uglify
 gulp.task('minify', function() {
   gulp.src('./css/app.css')
@@ -93,7 +110,7 @@ gulp.task('minify', function() {
     .pipe(gulp.dest('./js/'))
 });
 
-gulp.task('dist', ['move']);
+gulp.task('dist', ['clean', 'move']);
 
 gulp.task('default', ['browser-sync'], function() {
   gulp.watch('./coffeescript/*.coffee', ['coffee']);

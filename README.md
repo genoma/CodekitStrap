@@ -15,6 +15,8 @@ Clone the repo, add your branch and your own remote and you're pretty much ready
 
 `$ gulp` launch gulp from terminal to compile, preview and work on your web app.
 
+`$ gulp prepare` after a Bootstrap submodule update copies all the javascript files into the project root folder.
+
 `$ gulp minify` minify and ugilfy respectively css and javascript.
 
 `$ gulp dist` put relevant files into the dist folder to deploy your work.
