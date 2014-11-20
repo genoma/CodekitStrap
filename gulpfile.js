@@ -1,5 +1,5 @@
-// TODO: Fix less compiler behaviour with something better than
-// handleError(err) function.
+// TODO: Fix less compiler behaviour with something
+// better than handleError(err) function.
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
@@ -7,10 +7,11 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
 var del = require('del');
 
-function handleError(err) {
-  console.log(err.toString());
-  this.emit('end');
-}
+// REMOVED
+// function handleError(err) {
+//   console.log(err.toString());
+//   this.emit('end');
+// }
 
 // compile CoffeeScrip    t
 gulp.task('coffee', function() {
