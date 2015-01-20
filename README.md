@@ -1,26 +1,7 @@
-[Bootstrap](http://getbootstrap.com/) as a __Git submodule__ plus [Bower](http://bower.io/) and [Gulp](http://gulpjs.com/)!
+[Bootstrap](http://getbootstrap.com/) as a __Git submodule__ plus [Bower](http://bower.io/), [Gulp](http://gulpjs.com/) and [Codekit 2](https://incident57.com/codekit/) configuration.
 ===========================================================================================================================
-v2.0.1
 
-A pretty smart frontend complete tool to develop faster and better, fully extensible with Bower (contains Angular, jQuery), easily deployable with Gulp (support for Less, Coffeescript, Sourcemaps) and integrated with [BrowserSync](http://www.browsersync.io/).
-
-## BETA
-
-This framework is currently in a *beta* stage.
-
-## Install
-
-Clone the repo, add your branch and your own remote and you're pretty much ready to develop your own web app.
-
-## Howto
-
-`$ gulp` launch gulp from terminal to compile, preview and work on your web app.
-
-`$ gulp prepare` after a Bootstrap submodule update copies all the javascript files into the project root folder.
-
-`$ gulp minify` minify and ugilfy respectively css and javascript.
-
-`$ gulp dist` put relevant files into the dist folder to deploy your work.
+This is a fully functional Codekit 2 configuration for Bootstrap as a submodule, Bower and Gulp.
 
 ## Contributing
 
