@@ -3,6 +3,14 @@
 
 This is a fully functional Codekit 2 configuration for Bootstrap as a submodule, Bower and Gulp.
 
+## Gulp
+
+Gulp is used to prepare the project after a Bootstrap submodule update and to copy relevant files into a dist folder for publishing purposes:
+
+`$ gulp prepare` after a Bootstrap update, just copies the relevant js files into the `js` folder.
+
+`$ gulp dist` copy your web app in a new `dist` folder wich contains only the relevant file stripping out source files.
+
 ## Contributing
 
 Any sort of contribution is more than welcome, just fork the project and add your own fixes or improvements.
