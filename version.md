@@ -1,3 +1,3 @@
-# v1.0.0
+# v1.0.2
 
 First fork and various modifications to use **Codekit** as main compiler.
