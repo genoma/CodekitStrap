@@ -1,26 +1,2 @@
-var $;
-
-$ = jQuery;
-
-$.fn.extend({
-  pluginName: function(options) {
-    var log, settings;
-    settings = {
-      option1: true,
-      option2: false,
-      debug: false
-    };
-    settings = $.extend(settings, options);
-    log = function(msg) {
-      if (settings.debug) {
-        return typeof console !== "undefined" && console !== null ? console.log(msg) : void 0;
-      }
-    };
-    return this.each(function() {
-      log("Preparing magic show.");
-      return log("Option 1 value: " + settings.option1);
-    });
-  }
-});
-
-//# sourceMappingURL=../../maps/plugin.js.map
+var $;$=jQuery,$.fn.extend({pluginName:function(options){var log,settings;return settings={option1:!0,option2:!1,debug:!1},settings=$.extend(settings,options),log=function(msg){return settings.debug&&"undefined"!=typeof console&&null!==console?console.log(msg):void 0},this.each(function(){return log("Preparing magic show."),log("Option 1 value: "+settings.option1)})}});
+//# sourceMappingURL=./plugin.js.map
