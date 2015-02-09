@@ -11,10 +11,6 @@ Gulp is used to prepare the project after a Bootstrap submodule update and to co
 
 `$ gulp dist` copy your web app in a new `dist` folder wich contains only the relevant file stripping out source files.
 
-## Contributing
-
-Any sort of contribution is more than welcome, just fork the project and add your own fixes or improvements.
-
 ## MIT LICENSE
 Copyright (c) 2014 Alessandro Vioni
 
