@@ -7,7 +7,7 @@ gulp.task('clean', function(cb) {
 });
 
 // Move the needed files and folders into a dist folder which can be deployed to the webserver
-gulp.task('move', ['clean'], function() {
+gulp.task('dist', ['clean'], function() {
   gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html', './templates/**/*.*', './images/**/*.*', './.htaccess', './fonts/**/*.*', './functions/**/*.*', './contents/**/*.*'], { base: './' })
   .pipe(gulp.dest('dist'));
 });
@@ -17,23 +17,19 @@ gulp.task('move', ['clean'], function() {
 // Bootstrap submodule update
 
 gulp.task('pre-prepare', function(cb) {
-  gulp.src(['./bootstrap/js/**/*.*/'], {base: './bootstrap/js'})
+  var pre = gulp.src(['./bootstrap/js/**/*.*/'], {base: './bootstrap/js'})
   .pipe(gulp.dest('js'));
-  setTimeout(function(){
-    cb(null);
-  }, 500);
+  return pre;
 });
 
-gulp.task('font-prepare', function() {
-  gulp.src(['./bootstrap/fonts/**/*.*/'], {base: './bootstrap/fonts'})
+gulp.task('font-prepare', function(cb) {
+  var font = gulp.src(['./bootstrap/fonts/**/*.*/'], {base: './bootstrap/fonts'})
   .pipe(gulp.dest('fonts'));
+  return font
 });
 
 // Delete the tests folder
-gulp.task('post-prepare', ['pre-prepare'], function() {
+gulp.task('prepare', ['pre-prepare', 'font-prepare'], function() {
   return del(['./js/tests']);
 });
 
-// Assemble the final task
-gulp.task('prepare', ['pre-prepare', 'font-prepare']);
-gulp.task('dist', ['move']);
