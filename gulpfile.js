@@ -13,23 +13,26 @@ gulp.task('dist', ['clean'], function() {
 });
 
 
-// Prepare the project after a
-// Bootstrap submodule update
-
+// Copy Bootstrap Js's to the root project folder
 gulp.task('pre-prepare', function(cb) {
   var pre = gulp.src(['./bootstrap/js/**/*.*/'], {base: './bootstrap/js'})
   .pipe(gulp.dest('js'));
   return pre;
 });
 
+// Copy fonts folder to the root project folder
 gulp.task('font-prepare', function(cb) {
   var font = gulp.src(['./bootstrap/fonts/**/*.*/'], {base: './bootstrap/fonts'})
   .pipe(gulp.dest('fonts'));
   return font
 });
 
-// Delete the tests folder
+// Delete the tests folder from js/
 gulp.task('prepare', ['pre-prepare', 'font-prepare'], function() {
   return del(['./js/tests']);
 });
 
+// Call tasks
+//
+// `$ gulp prepare` after a bootstrap update copies all the relevant files to the root project folder
+// `$ gulp dist` copies relevant files to the dist folder ready to be deployed into a server
